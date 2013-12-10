@@ -9,16 +9,19 @@ var c4 = new Citizen('Arkey', 'Seoras', 23);
 var c5 = new Citizen('Ismael', 'Gordo', 100);
 
 
-t1.addCitizen(c1);
-t1.addCitizen(c2);
-t2.addCitizen(c3);
-t2.addCitizen(c4);
-t2.addCitizen(c5);
+t1.setCitizen(c1);
+t1.setCitizen(c2);
+t2.setCitizen(c3);
+t2.setCitizen(c4);
+t2.setCitizen(c5);
 
 t1.introduceCitizens();
 t2.introduceCitizens();*/
 
-var world = new World ('Tainor', new Array(), new Array(), 0, 0);
-//world.generateTowns(5,10);
-world.generateCitizens(40,50);
+var world = new World ('Tainor', [], [], 0, 0);
+world.createMap(300,450);
+world.generateTowns(30,30);
+world.generateCitizens(700,700);
+world.assignCitizensToTowns(1);
+world.describeTowns();
 world.introduceCitizens();
