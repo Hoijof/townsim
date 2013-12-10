@@ -18,10 +18,12 @@ t2.setCitizen(c5);
 t1.introduceCitizens();
 t2.introduceCitizens();*/
 
-var world = new World ('Tainor', [], [], 0, 0);
+var world = new World ('Tainor', "Yesterday", [], [], 0, 0);
+world.setGod("Goirs");
 world.createMap(300,450);
-world.generateTowns(30,30);
-world.generateCitizens(700,700);
-world.assignCitizensToTowns(1);
+world.generateTowns(35,35);
+world.generateCitizens(8000,8000);
+world.assignCitizensToTowns(0.899);
+world.assingMajors();
 world.describeTowns();
-world.introduceCitizens();
+//world.introduceCitizens();

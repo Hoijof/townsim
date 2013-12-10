@@ -6,6 +6,11 @@ Array.prototype.size = function(){
 	return this.filter(function(a){return a !== undefined;}).length
 };
 
+function isAppening(prob) {
+	return getRandomInt(0, 100) <= prob;
+
+}
+
 function loadjsfile( filename)
 {
 	var rnd = Math.floor(Math.random()*80000);
@@ -30,8 +35,8 @@ function getRandomCitizenSurname() {
 	return surnames[getRandomInt(0,surnames.length-1)];
 }
 function getRandomTownName() {
-	//var request = readFile('family-names.dic');
-	return townNames[getRandomInt(0,townNames.length-1)];
+	if(isAppening(33)) return townNames[getRandomInt(0,townNames.length-1)];
+	return townFirstNames[getRandomInt(0,townFirstNames.length-1)]+townSecondNames[getRandomInt(0,townSecondNames.length-1)];
 }
 
 
