@@ -1,8 +1,8 @@
-var _tMisc = [];
-	_tMisc[0] = "Useless";
-	_tMisc[1] = "Apprentice";
-	_tMisc[2] = "Skilled";
-	_tMisc[3] = "Master";
+var _tJobLevel = [];
+	_tJobLevel[0] = "Useless";
+	_tJobLevel[1] = "Apprentice";
+	_tJobLevel[2] = "Skilled";
+	_tJobLevel[3] = "Master";
 
 var _tStats = [];
     _tStats[0] = "Strength";
@@ -15,9 +15,30 @@ var _tStats = [];
 var _tSkills = [];
 	_tSkills[0] = "Merchant";
 	_tSkills[1] = "Charisma";
-	_tSkills[2] = "Combat";
+	_tSkills[2] = "One Hand Combat";
+	_tSkills[3] = "Two Hands Combat";
+	_tSkills[4] = "Ranged combat";
+	_tSkills[5] = "Patrol";
+	_tSkills[6] = "Composure";
+	_tSkills[7] = "Intimidation";
 
-var _tProfessions =[];
+var _tStatus = [];
+	_tStatus[0] = "Healthy";
+	_tStatus[1] = "Happy";
+	_tStatus[2] = "Sad";
+	_tStatus[3] = "Ill";
+	_tStatus[4] = "Injured";
+	_tStatus[5] = "Drunk";
+	_tStatus[6] = "Hangover";
+
+var _tSocialStatus = [];
+	_tSocialStatus[0] = "Single";
+	_tSocialStatus[1] = "Couple";
+	_tSocialStatus[2] = "Engaged";
+	_tSocialStatus[3] = "Married";
+	_tSocialStatus[4] = "Divorced";
+
+var _tProfessions = [];
     _tProfessions[-2] = "Major";
     _tProfessions[-1] = "Unemployed";
     _tProfessions[0] = "Warrior";
@@ -25,6 +46,15 @@ var _tProfessions =[];
     _tProfessions[2] = "Doctor";
     _tProfessions[3] = "Merchant";
     _tProfessions[4] = "Sex industry worker";
+
+var _tEvents = [];
+	_tEvents[0] = "Understands the job";
+	_tEvents[1] = "Doesn't understand the job";
+	_tEvents[2] = "Likes to gamble in work";
+	_tEvents[3] = "Likes to slack off in work";
+	_tEvents[4] = "Has experience in the job";
+	_tEvents[5] = "Is injured";
+	_tEvents[6] = "Drunk a lot last night";
 
 var Messages = [];
     Messages[0] = ["I didn't expected that, Sir", "Sorry to disappoint you, Sir", "It won't happen again"];

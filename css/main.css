@@ -112,8 +112,6 @@ input {
 .standardView > div > fieldset > label {
 	margin: 10px 0;
 }
-.lbViewActualWorldView {
-}
 .lbConfigurationView {
 }
 
@@ -121,6 +119,10 @@ input {
 	max-width: 400px;
 	float:left;
 	height: 200px;
+}
+
+.lbViewActualWorldView > div > fieldset {
+	height: auto;
 }
 .standardView > div > fieldset > div {
 	text-align: left;

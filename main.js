@@ -22,3 +22,5 @@ var daysInAMonth = 25;
 var monthsInAYear = 10;
 var statPointsToAssign = 100;
 var skillPointsToAssign = 20;
+var maxStat = 100;
+var maxSkill = 1000;

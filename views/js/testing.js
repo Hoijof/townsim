@@ -187,7 +187,7 @@ $("document").ready(function() {
 				$('#scNickname').html(citizen.getNickname());
 				//noinspection JSDuplicatedDeclaration
 				var tmp = citizen.getProfession();
-				$('#scProfessionLevel').html(_tMisc[tmp[1]]);
+				$('#scProfessionLevel').html(_tJobLevel[tmp[1]]);
 				$('#scProfession').html(_tProfessions[tmp[0]]);
 				$('#scBirthday').html(getDateFromTime(citizen.getBirthday()));
 				$('#scAge').html(getAgeFromTime(citizen.getBirthday()));

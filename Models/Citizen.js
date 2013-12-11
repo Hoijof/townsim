@@ -10,6 +10,8 @@ function Citizen(name, surname, birthday, sex) {
 	this.town = 'undefined';
 	this.stats = [0,0,0,0,0,0];
 	this.skills = [];
+	this.status = [0,1];
+	this.socialStatus = [0];
 
     //init functions
 
@@ -80,6 +82,18 @@ Citizen.prototype.getTown = function() {
 Citizen.prototype.setTown = function(town) {
 	this.town = town;
 };
+Citizen.prototype.getStatus = function () {
+	return this.status;
+};
+Citizen.prototype.setStatus = function (status) {
+	this.status = status;
+};
+Citizen.prototype.getSocialStatus = function () {
+	return this.socialStatus;
+};
+Citizen.prototype.setSocialStatus = function (socialStatus) {
+	this.socialStatus = socialStatus;
+}
 
 //algorithm functions
 Citizen.prototype.salute = function() {
@@ -91,8 +105,8 @@ Citizen.prototype.salute = function() {
 		message += " I'm homeless and living of our world, " + world.getName();
 	}
 	message += ". My identification number is " + this.id + ".";
-	if (this.profession[0] == 0-2) message += " I'm the " + _tMisc[this.profession[1]] + " " + _tProfessions[this.profession[0]] + " of " + this.getTown().getName();
-	else message += " I'm a " + _tMisc[this.profession[1]] + " " + _tProfessions[this.profession[0]];
+	if (this.profession[0] == 0-2) message += " I'm the " + _tJobLevel[this.profession[1]] + " " + _tProfessions[this.profession[0]] + " of " + this.getTown().getName();
+	else message += " I'm a " + _tJobLevel[this.profession[1]] + " " + _tProfessions[this.profession[0]];
 
 	console.log(message);
 };
@@ -122,6 +136,8 @@ Citizen.prototype.generateSkills = function(pointsToAssign) {
     var skills = new Array(_tSkills.length);
     for(var i = 0; i < skills.length; ++i) skills[i] = 0;
     var points = pointsToAssign;
+	if(isAppening(5)) pointsToAssign = points -= points*(getRandomInt(0,30)/100);
+	if(isAppening(5)) pointsToAssign = points += points*(getRandomInt(0,30)/100);
 
     while(points > 0) {
         var skillsCount = [];

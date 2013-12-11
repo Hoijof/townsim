@@ -90,15 +90,13 @@ World.prototype.generateCitizens = function(min, max) {
 		var citizen = new Citizen(getRandomCitizenName(sex), getRandomCitizenSurname(), actualTime, sex);
 
 		var profession = new Array(3);
-		profession[0] = getRandomInt(0,_tProfessions.length-1);
-		if(isAppening(5)) profession[1] = 3;
-		else if(isAppening(15)) profession[1] = 2;
-		else if(isAppening(30)) profession[1] = 1;
-		else profession[1] = 0;
-		profession[2] = 14;
+		profession[0] = getRandomInt(0,_tProfessions.length-1); // profession
+		profession[1] = 0; // level
+		profession[2] = 0; // events linked to the profession such as ]
 		citizen.setProfession(profession);
-        citizen.generateStats(statPointsToAssign);
-        citizen.generateSkills(skillPointsToAssign);
+		citizen.generateStats(statPointsToAssign);
+		citizen.generateSkills(skillPointsToAssign);
+		if(profession[0] == 0) setProfessionLevelByCitizen(citizen);
 		citizen.setTown(this.getName());
 		this.citizens[citizen.id] = citizen;
 	}
