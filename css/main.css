@@ -6,10 +6,20 @@ body {
 }
 div {
 }
+input {
+	width: 100px;
+}
 
 .generalButton {
 	box-shadow: 3px 3px 4px #000000;
 	cursor: pointer;
+}
+.clickableInfo {
+	cursor: pointer;
+	text-decoration: underline;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
 }
 .topBar {
 	background-color: #000000;
@@ -72,13 +82,13 @@ div {
 .lateralBar > p {
 	cursor: pointer;
 }
-.lbNewWorldView {
+.standardView {
 	height: 100%;
 	text-align: center;
 	vertical-align: middle;
 	width: 100%;
 }
-.lbNewWorldView > div {
+.standardView > div {
 	background-color: #FFFFFF;
 	border-radius: 10px;
 	box-shadow: 5px 5px 10px #000000;
@@ -87,16 +97,19 @@ div {
 	text-align: center;
 	width: 100%;
 	padding-bottom: 10px;
+	height: 100%;
+	display: inline-block;
 }
-.lbNewWorldView > div > header {
+.standardView > div > header {
 	background-color: #9A7958;
 	border-radius: 10px 10px 0 0;
 	margin-bottom: 10px;
 }
-.lbNewWorldView > div fieldset {
+.standardView > div fieldset {
 	margin: 5px;
+	max-height: 200px;
 }
-.lbNewWorldView > div > fieldset > label {
+.standardView > div > fieldset > label {
 	margin: 10px 0;
 }
 .lbViewActualWorldView {
@@ -104,8 +117,31 @@ div {
 .lbConfigurationView {
 }
 
+.standardView > div > fieldset {
+	max-width: 400px;
+	float:left;
+	height: 200px;
+}
+.standardView > div > fieldset > div {
+	text-align: left;
+}
+
+.standardView > div > fieldset > div > ul {
+	text-align: left;
+	margin-left: -20px;
+	margin-top: 0;
+	padding-right: 5px;
+}
+.standardView > div > fieldset > label {
+	margin: 10px 0;
+}
+.ulContainer {
+	overflow-x: hidden;
+	overflow-y: scroll;
+	height: 96%;
+}
 @media screen and (min-width:600px) and (max-width:1000px){
-	.lbNewWorldView > div > fieldset > label {
+	.standardView > div > fieldset > label {
 		display:block;
 		margin: 10px 0;
 	}

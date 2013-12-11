@@ -83,7 +83,7 @@ Citizen.prototype.setTown = function(town) {
 Citizen.prototype.salute = function() {
 	var message = "Sir, this is citizen " + this.name + " " + this.surname + " and I\'m a " + this.sex
 					+ " and I\'m " + getAgeFromTime(this.getBirthday()) + " years old.";
-	if (this.town !== 'undefined') {
+	if (this.town !== world.getName()) {
 		message += " I'm from " + this.town.getName();
 	} else {
 		message += " I'm homeless and living of our world, " + world.getName();

@@ -97,7 +97,7 @@ World.prototype.generateCitizens = function(min, max) {
 		else profession[1] = 0;
 		profession[2] = 14;
 		citizen.setProfession(profession);
-
+		citizen.setTown(this.getName());
 		this.citizens[citizen.id] = citizen;
 	}
 };

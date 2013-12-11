@@ -71,14 +71,160 @@ $("document").ready(function() {
 		else alert("Not able to create the map, look at your console to see the errors");
 	});
 
+	$("#scPrevious").on("click", function() {
+		if(params[1] > 0)	params[1]--;
+		updateActiveView();
+	});
+
+	$("#scNext").on("click", function() {
+		if(params[1] < world.citizens.size()-1) params[1]++;
+		updateActiveView();
+	});
+
+	$("#stPrevious").on("click", function() {
+		if(params[1] > 0)	params[1]--;
+		updateActiveView();
+	});
+
+	$("#stNext").on("click", function() {
+		if(params[1] < world.towns.size()-1) params[1]++;
+		updateActiveView();
+	});
+
+
+	$(".toTown").on("click", "span", function () {
+		params[0] = "showTownView";
+		params[1] = $(this).attr('id').split('-')[1];
+		setActiveView("showTown");
+	});
+	$(".toCitizen").on("click", "span", function () {
+		params[0] = "showCitizenView";
+		params[1] = $(this).attr('id').split('-')[1];
+		setActiveView("showCitizen");
+	});
+	$(".toCitizenList").find("> div > ul").on("click", "li", function () {
+		params[0] = "showCitizenView";
+		params[1] = $(this).attr('id').split('-')[1];
+		setActiveView("showCitizen");
+	});
+	$(".toTownList").find("> div > ul").on("click", "li", function () {
+		params[0] = "showTownView";
+		params[1] = $(this).attr('id').split('-')[1];
+		setActiveView("showTown");
+	});
+
 	function updateActiveView() {
 		switch(activeView.selector) {
 			case "#lbNewWorldView":
-				break;
+
+			break;
 			case "#lbViewActualWorldView":
-				break;
+
+				//general
+				$("#swName").html(world.getName());
+				$("#swCreationDate").html(getDateFromTime(world.getCreationTime()));
+				$("#swGodName").html(world.getGod());
+				$("#swMapSize").html(world.map[0].length + "x" + world.map.length);
+
+				//towns
+				$("#swNumberOfTowns").html(world.towns.size());
+				var mostPopulated = world.getTownById(0);
+				var lessPopulated = world.getTownById(0);
+				//noinspection JSDuplicatedDeclaration
+				var html = "";
+				world.towns.forEach(function (town) {
+					html += "<li id=\"swTown-" + town.getId()
+						+ "\" class=\"clickableInfo\">" + town.getName() + "</li>";
+					if (town.getNumberOfCitizens() > mostPopulated.getNumberOfCitizens()) mostPopulated = town;
+					if (town.getNumberOfCitizens() < lessPopulated.getNumberOfCitizens()) lessPopulated = town;
+				});
+				$("#swListOfTowns").find("> div > ul").html(html);
+				$("#swMostPopulatedTown").html("<span id=\"swTown-" + mostPopulated.getId()
+						+ "\" class=\"clickableInfo\">" + mostPopulated.getName() + "</span>");
+				$("#swLessPopulatedTown").html("<span id=\"swTown-" + lessPopulated.getId()
+					+ "\" class=\"clickableInfo\">" + lessPopulated.getName() + "</span>");
+
+				//citizens
+				$("#swNumberOfCitizens").html(world.citizens.size());
+				var htmlTown = "";
+				var htmlWithoutTown ="";
+				var countTown = 0;
+				var countWithoutTown = 0;
+				world.citizens.forEach(function (citizen) {
+					if (citizen.getTown() != world.getName()) {
+						htmlTown += "<li id=\"swCitizen-" + citizen.getId()
+							+ "\" class=\"clickableInfo\">" + citizen.getName() + " " + citizen.getSurname() + "</li>";
+						++countTown
+					} else {
+						htmlWithoutTown += "<li id=\"swCitizen-" + citizen.getId()
+							+ "\" class=\"clickableInfo\">" + citizen.getName() + " " + citizen.getSurname() + "</li>";
+						++countWithoutTown;
+					}
+				});
+				$("#swNumberCitizensWithTown").html(countTown);
+				$("#swNumberCitizensWithoutTown").html(countWithoutTown);
+				$("#swListOfCitizensWithTown").find("> div > ul").html(htmlTown);
+				$("#swListOfCitizensWithoutTown").find("> div > ul").html(htmlWithoutTown);
+			break;
 			case "#lbConfigurationView":
-				break;
+
+			break;
+			case "#showCitizenView":
+				if(params[0] != "showCitizenView"){
+					params[0] = "showCitizenView";
+					params[1] = 0;
+				}
+				var citizen = world.getCitizenById(params[1]);
+				if (typeof(citizen) == 'undefined') return;
+
+				$("#showCitizenView").find("> div > header").html("Citizen " + citizen.getId());
+				//general
+				$('#scName').html(citizen.getName());
+				$('#scSurname').html(citizen.getSurname());
+				$('#scSex').html(citizen.getSex());
+				$('#scBornPlace').html(citizen.getBornPlace());
+				//misc
+				$('#scNickname').html(citizen.getNickname());
+				//noinspection JSDuplicatedDeclaration
+				var tmp = citizen.getProfession();
+				$('#scProfessionLevel').html(_tMisc[tmp[1]]);
+				$('#scProfession').html(_tProfessions[tmp[0]]);
+				$('#scBirthday').html(getDateFromTime(citizen.getBirthday()));
+				$('#scAge').html(getAgeFromTime(citizen.getBirthday()));
+				tmp = citizen.getTown();
+				if (typeof(tmp) == 'object') $('#scTown').html("<span id=\"scTown-" + tmp.getId()
+														+ "\" class=\"clickableInfo\">" + tmp.getName() + "</span>");
+				else $('#scTown').html(world.getName());
+			break;
+			case "#showTownView":
+				if(params[0] != "showTownView"){
+					params[0] = "showTownView";
+					params[1] = 0;
+				}
+				var town = world.getTownById(params[1]);
+				if (typeof(town) == 'undefined') return;
+
+				$("#showTownView").find("> div > header").html("Town " + town.getId());
+				//general
+				$("#stName").html(town.getName());
+				$("#stCreationDate").html(getDateFromTime(town.getCreationTime()));
+				$("#stCoordinates").html(town.getX() + "x" + town.getY());
+				$("#stSize").html(town.getSize());
+				$("#stNumberOfCitizens").html(town.citizens.size());
+				//noinspection JSDuplicatedDeclaration
+				var tmp = town.getMajor();
+				if(typeof(tmp) == 'object') $("#stMajor").html("<span id=\"stCitizen-" + tmp.getId()
+								+ "\" class=\"clickableInfo\">" + tmp.getName() + " " + tmp.getSurname() + "</span>");
+				else $("#stMajor").html('undefined');
+
+				//noinspection JSDuplicatedDeclaration
+				var html = "";
+				town.citizens.forEach(function (citizen) {
+					html += "<li id=\"stCitizen-" + citizen.getId()
+								+ "\" class=\"clickableInfo\">" + citizen.getName() + " " + citizen.getSurname() + "</li>";
+				});
+				$("#stListOfCitizens").find("> div > ul").html(html);
+			break;
 			default:
 				console.debug("none updated");
 
@@ -100,6 +246,7 @@ $("document").ready(function() {
 	}
 
 	var activeView = "undefined";
+	var params = [];
 //	var timeTimer = 1;
 //	window.clearInterval(timeTimer);
 //			timeTimer = setInterval(function(){passADay()},10000);

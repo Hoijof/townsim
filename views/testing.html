@@ -39,77 +39,300 @@
 					<li>Create a World (New World)</li>
 				</ul>
 			</div>
-			<div id='lbNewWorldView' class="lbNewWorldView" style="display:none;">
+			<div id='lbNewWorldView' class="standardView" style="display:none;">
 				<div>
 					<header>World Settings</header>
 					<fieldset>
 						<legend>General</legend>
-
-						<label for="newWorldName">World name: </label>
-						<input id="newWorldName" type="text" value='test' min ='1' max="15">
-
-						<label for="newWorldGodName">World God name: </label>
-						<input id="newWorldGodName" type="text" value='test' min ='1' max="15">
-
-						<label for="newWorldCreationTime">World creation time in days (0 to 10000): </label>
-						<input id="newWorldCreationTime" type="number" value="0" max="10000">
-					</fieldset>
+						<div>
+							<label for="newWorldName">World name: </label>
+							<input id="newWorldName" type="text" value='test' min ='1' max="15">
+						</div>
+						<div>
+							<label for="newWorldGodName">World God name: </label>
+							<input id="newWorldGodName" type="text" value='test' min ='1' max="15">
+						</div>
+						<div>
+							<label for="newWorldCreationTime">World creation time in days (0 to 10000): </label>
+							<input id="newWorldCreationTime" type="number" value="0" max="10000">
+						</div>
+						</fieldset>
 					<fieldset>
 						<legend>Map</legend>
-
-						<label for="newWorldMapX">Map size X (1 to 1000): </label>
-						<input id="newWorldMapX" type="number" value="10" min="1" max="1000">
-
-						<label for="newWorldMapY">Map size Y (1 to 1000): </label>
-						<input id="newWorldMapY" type="number" value="10" min="1" max="1000">
+						<div>
+							<label for="newWorldMapX">Map size X (1 to 1000): </label>
+							<input id="newWorldMapX" type="number" value="10" min="1" max="1000">
+						</div>
+						<div>
+							<label for="newWorldMapY">Map size Y (1 to 1000): </label>
+							<input id="newWorldMapY" type="number" value="10" min="1" max="1000">
+						</div>
 					</fieldset>
 				</div>
 				<div>
 					<header>Town Settings</header>
 					<fieldset>
 						<legend>General</legend>
-
-						<label for="newWorldMinimumTowns">Minimum amount of towns (1 to 1000): </label>
-						<input id="newWorldMinimumTowns" type="number" value="1" min="1" max="1000">
-
-						<label for="newWorldMaximumTowns">Maximum amount of towns (1 to 1000): </label>
-						<input id="newWorldMaximumTowns" type="number" value="1" min="2" max="1000">
+						<div>
+							<label for="newWorldMinimumTowns">Minimum amount of towns (1 to 1000): </label>
+							<input id="newWorldMinimumTowns" type="number" value="1" min="1" max="1000">
+						</div>
+						<div>
+							<label for="newWorldMaximumTowns">Maximum amount of towns (1 to 1000): </label>
+							<input id="newWorldMaximumTowns" type="number" value="1" min="2" max="1000">
+						</div>
 					</fieldset>
 				</div>
 				<div>
 					<header>Citizens Settings</header>
 					<fieldset>
 						<legend>General</legend>
-
-						<label for="newWorldMinimumCitizens">Minimum amount of citizens (1 to 10000): </label>
-						<input id="newWorldMinimumCitizens" type="number" value="10" min="1" max="10000">
-
-						<label for="newWorldMaximumCitizens">Maximum amount of citizens (1 to 10000): </label>
-						<input id="newWorldMaximumCitizens" type="number" value="50" min="1" max="10000">
-
-						<label for="newWorldCitizensToTowns">Percentage of citizens in towns (0 - 100): </label>
-						<input id="newWorldCitizensToTowns" type="range" value="50" min="0" max="100">
+						<div>
+							<label for="newWorldMinimumCitizens">Minimum amount of citizens (1 to 10000): </label>
+							<input id="newWorldMinimumCitizens" type="number" value="10" min="1" max="10000">
+						</div>
+						<div>
+							<label for="newWorldMaximumCitizens">Maximum amount of citizens (1 to 10000): </label>
+							<input id="newWorldMaximumCitizens" type="number" value="50" min="1" max="10000">
+						</div>
+						<div>
+							<label for="newWorldCitizensToTowns">Percentage of citizens in towns (0 - 100): </label>
+							<input id="newWorldCitizensToTowns" type="range" value="50" min="0" max="100">
+						</div>
 					</fieldset>
 				</div>
 				<div>
 					<header>Create World</header>
 					<input type="button" id="newWorldSubmit" value="Create World" class="generalButton">
 				</div>
-
 			</div>
 
-			<div id='lbViewActualWorldView' class="lbViewActualWorldView" style="display:none;">
-				lbViewActualWorldView
+			<div id='lbViewActualWorldView' class="standardView" style="display:none;">
+				<div>
+					<header>World</header>
+					<fieldset>
+						<legend>General</legend>
+						<div>
+							<label for="swName">Name: </label>
+							<span id="swName"></span>
+						</div>
+						<div>
+							<label for="swCreationDate">Creation Date: </label>
+							<span id="swCreationDate"></span>
+						</div>
+						<div>
+							<label for="swGodName">God name: </label>
+							<span id="swGodName"></span>
+						</div>
+						<div>
+							<label for="swMapSize">Map size: </label>
+							<span id="swMapSize"></span>
+						</div>
+					</fieldset>
+
+					<fieldset>
+						<legend>Towns information</legend>
+						<div>
+							<label for="swNumberOfTowns">nº of towns: </label>
+							<span id="swNumberOfTowns" >	</span>
+						</div>
+						<div>
+							<label for="swMostPopulatedTown">Most populated town: </label>
+							<span id="swMostPopulatedTown" class="toTown">	</span>
+						</div>
+						<div>
+							<label for="swLessPopulatedTown">Less populated town: </label>
+							<span id="swLessPopulatedTown" class="toTown" >	</span>
+						</div>
+					</fieldset>
+
+					<fieldset id="swListOfTowns" class="toTownList">
+						<legend>List of Towns</legend>
+						<div class="ulContainer">
+							<ul>
+								<li id="swTown-0">
+									<span>Hoijof Golpeo</span>
+								</li>
+							</ul>
+						</div>
+					</fieldset>
+
+					<fieldset>
+						<legend>Citizens information</legend>
+						<div>
+							<label for="swNumberOfCitizens">nº of citizens: </label>
+							<span id="swNumberOfCitizens" >	</span>
+						</div>
+						<div>
+							<label for="swNumberCitizensWithTown">nº of citizens in towns: </label>
+							<span id="swNumberCitizensWithTown" >	</span>
+						</div>
+						<div>
+							<label for="swNumberCitizensWithoutTown">nº of citizens homeless: </label>
+							<span id="swNumberCitizensWithoutTown" >	</span>
+						</div>
+					</fieldset>
+					<fieldset id="swListOfCitizensWithTown" class="toCitizenList">
+						<legend>List of Citizens with town</legend>
+						<div class="ulContainer">
+							<ul>
+								<li id="swCitizen-0">
+									<span>Hoijof Golpeo</span>
+								</li>
+							</ul>
+						</div>
+					</fieldset>
+					<fieldset id="swListOfCitizensWithoutTown" class="toCitizenList">
+						<legend>List of Citizens whitout town</legend>
+						<div class="ulContainer">
+							<ul>
+								<li id="swCitizen-1">
+									<span>Hoijof Golpeo</span>
+								</li>
+							</ul>
+						</div>
+					</fieldset>
+				</div>
 			</div>
 
-			<div id='lbConfigurationView' class="lbConfigurationView" style="display:none;">
+			<div id='lbConfigurationView' class="standardView" style="display:none;">
 				lbConfigurationView
+			</div>
+
+			<div id='showCitizenView' class="standardView" style="display:none;">
+				<div>
+					<header>Citizen (01)</header>
+					<div>
+						<span id="scPrevious" class="clickableInfo"><b><<</b> Previous</span>
+						<span id="scNext" class="clickableInfo">Next <b>>></b></span>
+					</div>
+					<fieldset>
+						<legend>General</legend>
+						<div>
+							<label for="scName">Name: </label>
+							<span id="scName"></span>
+						</div>
+						<div>
+							<label for="scSurname">Surname: </label>
+							<span id="scSurname"></span>
+						</div>
+						<div>
+							<label for="scSex">Sex: </label>
+							<span id="scSex"></span>
+						</div>
+						<div>
+							<label for="scBornPlace">Born Place: </label>
+							<span id="scBornPlace"></span>
+						</div>
+						<div>
+							<label for="scBirthday">Birthday: </label>
+							<span id="scBirthday"></span>
+						</div>
+						<div>
+							<label for="scAge">Age: </label>
+							<span id="scAge"></span>
+						</div>
+
+					</fieldset>
+
+					<fieldset>
+						<legend>Others</legend>
+						<div>
+							<label for="scNickname">Nickname: </label>
+							<span id="scNickname" >	</span>
+						</div>
+						<div>
+							<label for="scProfession">Profession Level: </label>
+							<span id="scProfessionLevel" ></span>
+						</div>
+						<div>
+							<label for="scProfessionLevel">Profession: </label>
+							<span id="scProfession" ></span>
+						</div>
+						<div>
+							<label for="scTown">Town: </label>
+							<span id="scTown" class="toTown"></span>
+						</div>
+					</fieldset>
+
+					<fieldset>
+						<legend>Stats & Skills</legend>
+						<div>
+							<label for="test">Test: </label>
+							<span id="test" >TESTdfasdfasdfasfasdfasdfasdfafasdf	</span>
+						</div>
+						<div>
+							<label for="test">Test: </label>
+							<span id="test" >TEST	</span>
+						</div>
+						<div>
+							<label for="test">Test: </label>
+							<span id="test" >TEST	</span>
+						</div>
+						<div>
+						</div>
+					</fieldset>
+				</div>
+			</div>
+
+			<div id='showTownView' class="standardView" style="display:none;">
+				<div>
+					<header>Town (00)</header>
+					<div>
+						<span id="stPrevious" class="clickableInfo"><b><<</b> Previous</span>
+						<span id="stNext" class="clickableInfo">Next <b>>></b></span>
+					</div>
+					<fieldset>
+						<legend>General</legend>
+						<div>
+							<label for="stName">Name: </label>
+							<span id="stName"></span>
+						</div>
+						<div>
+							<label for="stCreationDate">Creation Date: </label>
+							<span id="stCreationDate"></span>
+						</div>
+						<div>
+							<label for="stCoordinates">Coordinates: </label>
+							<span id="stCoordinates"></span>
+						</div>
+						<div>
+							<label for="stSize">Size: </label>
+							<span id="stSize"></span>
+						</div>
+					</fieldset>
+
+					<fieldset>
+						<legend>Citizens information</legend>
+						<div>
+							<label for="stNumberOfCitizens">nº of Citizens: </label>
+							<span id="stNumberOfCitizens" >	</span>
+						</div>
+						<div>
+							<label for="stMajor">Major: </label>
+							<span id="stMajor" class="toCitizen"></span>
+						</div>
+					</fieldset>
+
+					<fieldset id="stListOfCitizens" class="toCitizenList">
+						<legend>List of Citizens</legend>
+						<div class="ulContainer">
+							<ul>
+								<li id="stCitizen-0">
+									<span>Hoijof Golpeo</span>
+								</li>
+							</ul>
+						</div>
+					</fieldset>
+				</div>
 			</div>
 		</div>
 		<div id="lateralBar" class="lateralBar">
 			<p id='lbNewWorld'>New World</p>
 			<p id='lbViewActualWorld'>View Actual World</p>
 			<p id='lbConfiguration'>Configuration</p>
+			<p id='showCitizen'>Show citizen</p>
+			<p id='showTown'>Show town</p>
 		</div>
 	</div>
 
