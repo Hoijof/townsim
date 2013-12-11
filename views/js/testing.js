@@ -63,21 +63,21 @@ $("document").ready(function() {
 			error = true;
 		}
 
-		if(!error) createWorld(name, creationTime, mapX, mapY, minTowns, maxTowns, minCitizens, maxCitizens,
-							   citizensInTowns, godName);
+		if(!error){
+			createWorld(name, creationTime, mapX, mapY, minTowns, maxTowns, minCitizens, maxCitizens,
+						citizensInTowns, godName);
+			updateTopBar();
+		}
 		else alert("Not able to create the map, look at your console to see the errors");
 	});
 
 	function updateActiveView() {
 		switch(activeView.selector) {
 			case "#lbNewWorldView":
-				console.debug("lbNewWorld updated");
 				break;
 			case "#lbViewActualWorldView":
-				console.debug("lbViewActualWorld updated");
 				break;
 			case "#lbConfigurationView":
-				console.debug("lbConfiguration updated");
 				break;
 			default:
 				console.debug("none updated");
@@ -89,10 +89,20 @@ $("document").ready(function() {
 		activeView = $("#"+view+"View");
 		updateActiveView();
 		activeView.show();
-		//console.log(activeView);
+	}
+
+	function updateTopBar () {
+		$("#tbWorldName").html(world.getName());
+		$("#tbTowns").html(world.towns.size());
+		$("#tbCitizens").html(world.citizens.size());
+		$("#tbMapSize").html(world.map[0].length + "x" + world.map.length);
+		$("#tbDate").html(getDateFromTime(actualTime));
 	}
 
 	var activeView = "undefined";
+//	var timeTimer = 1;
+//	window.clearInterval(timeTimer);
+//			timeTimer = setInterval(function(){passADay()},10000);
 	initTesting();
 });
 

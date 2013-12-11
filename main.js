@@ -9,7 +9,6 @@ function createWorld (worldName, worldCreationTime, mapX, mapY, townMin, townMax
 	world.createMap(mapX,mapY);
 	world.generateTowns(townMin,townMax);
 	world.generateCitizens(citizensMin,citizensMax);
-	actualTime = 8522;
 	world.assignCitizensToTowns(citizensToTowns);
 	world.assignMajors();
 	world.describeWorld();

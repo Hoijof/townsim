@@ -22,12 +22,24 @@ div {
 	width: 100%;
 	z-index: 10;
 }
+.tbDate {
+	float: right;
+	height: 100%;
+	min-width: 130px;
+	right: 0;
+	width: 11%;
+	text-align: center;
+}
 .topBar span {
 	display: inline-block;
 	height: 100%;
 	padding-top: 2px;
 	vertical-align: middle;
 }
+.tbData {
+
+}
+
 .container {
 	height: 100%;
 	margin-top: 20px;
@@ -84,7 +96,17 @@ div {
 .lbNewWorldView > div fieldset {
 	margin: 5px;
 }
+.lbNewWorldView > div > fieldset > label {
+	margin: 10px 0;
+}
 .lbViewActualWorldView {
 }
 .lbConfigurationView {
+}
+
+@media screen and (min-width:600px) and (max-width:1000px){
+	.lbNewWorldView > div > fieldset > label {
+		display:block;
+		margin: 10px 0;
+	}
 }

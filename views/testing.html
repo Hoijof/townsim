@@ -3,6 +3,7 @@
 <html xmlns="http://www.w3.org/1999/html">
 
 <head>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<script src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
 	<script src="../genericFunctions.js"></script>
 	<script src="../rawData/names.js"></script>
@@ -23,15 +24,22 @@
 
 <body>
 	<div id="topBar" class="topBar">
-		<span>welcome to the header</span>
+		<span>World Name: </span><span id="tbWorldName" class="tbData"></span>
+		<span>| Towns: </span><span id="tbTowns" class="tbData"></span>
+		<span>| Citizens: </span><span id="tbCitizens" class="tbData"></span>
+		<span>| Map Size: </span><span id="tbMapSize" class="tbData"></span>
+		<span id="tbDate" class="tbDate"></span>
 	</div>
 	<div id="container" class="container">
 		<div id="main" class="main">
-			<div id='indexView' style="display:none">
-				<p>worldName, worldCreationTime, mapX, mapY, townMin, townMax, citizensMin, citizensMax,
-					PercentCitizensAssignedToTowns</p>
+			<div id='indexView'>
+				<p>Welcome to the testing page .D. Here you will be able to test all the features fo Town Simulator</p>
+				<p>Currently only this features are available:</p>
+				<ul>
+					<li>Create a World (New World)</li>
+				</ul>
 			</div>
-			<div id='lbNewWorldView' class="lbNewWorldView" style="display:block">
+			<div id='lbNewWorldView' class="lbNewWorldView" style="display:none;">
 				<div>
 					<header>World Settings</header>
 					<fieldset>
@@ -80,7 +88,7 @@
 						<input id="newWorldMaximumCitizens" type="number" value="50" min="1" max="10000">
 
 						<label for="newWorldCitizensToTowns">Percentage of citizens in towns (0 - 100): </label>
-						<input id="newWorldCitizensToTowns" type="number" value="50" min="0" max="100">
+						<input id="newWorldCitizensToTowns" type="range" value="50" min="0" max="100">
 					</fieldset>
 				</div>
 				<div>
@@ -90,11 +98,11 @@
 
 			</div>
 
-			<div id='lbViewActualWorldView' class="lbViewActualWorldView" style="display:none">
+			<div id='lbViewActualWorldView' class="lbViewActualWorldView" style="display:none;">
 				lbViewActualWorldView
 			</div>
 
-			<div id='lbConfigurationView' class="lbConfigurationView" style="display:none">
+			<div id='lbConfigurationView' class="lbConfigurationView" style="display:none;">
 				lbConfigurationView
 			</div>
 		</div>

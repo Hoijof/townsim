@@ -6,6 +6,13 @@ Array.prototype.size = function(){
 	return this.filter(function(a){return a !== undefined;}).length
 };
 
+function formatNumberLength(num, length) {
+	var r = "" + num;
+	while (r.length < length) {
+		r = "0" + r;
+	}
+	return r;
+}
 function isAppening(prob) {
 	return getRandomInt(0, 100) <= prob;
 
@@ -54,7 +61,8 @@ function getDateFromTime(time) {
 	day = month%daysInAMonth;
 	month /= daysInAMonth;
 
-	return Math.floor(day+1) + "-" + Math.floor(month+1) + "-" + Math.floor(year);
+	return formatNumberLength(Math.floor(day+1), 2) + "-" + formatNumberLength(Math.floor(month+1), 2) + "-"
+			+ formatNumberLength(Math.floor(year),4);
 }
 function getAgeFromTime(time) {
 	var age = actualTime - time;
