@@ -1,7 +1,7 @@
-function Town (name, creationDate, x, y, size) {
+function Town (name, creationTime, x, y, size) {
 	this.id = world.getLastTownId();
 	this.name = name;
-	this.creationDate = "Today";
+	this.creationTime = creationTime;
 	this.x = x;
 	this.y = y;
 	this.size = size; // it increases with the number of citizens, if they leave the town loses sizes with time.
@@ -21,11 +21,11 @@ Town.prototype.getName = function() {
 Town.prototype.setName = function(name) {
 	this.name = name;
 };
-Town.prototype.getCreationDate = function() {
-	return this.creationDate;
+Town.prototype.getCreationTime = function() {
+	return this.creationTime;
 };
-Town.prototype.setCreationDate = function(creationDate) {
-	this.creationDate = creationDate;
+Town.prototype.setCreationTime = function(creationTime) {
+	this.creationTime = creationTime;
 };
 Town.prototype.getX = function(){
 	return this.x;
@@ -85,7 +85,7 @@ Town.prototype.introduceCitizens = function() {
 };
 
 Town.prototype.describe = function () {
-	var message = "Town created the " + this.creationDate + " and named \"" + this.getName() + "\" situated in [" + this.getX() + "," + this.getY() + "]" +
+	var message = "Town created the " + this.creationTime + " and named \"" + this.getName() + "\" situated in [" + this.getX() + "," + this.getY() + "]" +
 		" with a size of " + this.size + " plots";
 	if (this.citizens.size() == 0) {
 		message += " and with no citizens.";

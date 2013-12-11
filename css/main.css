@@ -1,0 +1,90 @@
+body {
+	background-color: #FFE6B4;
+	font-family: arial,sans-serif;
+	font-size: small;
+	margin: 0;
+}
+div {
+}
+
+.generalButton {
+	box-shadow: 3px 3px 4px #000000;
+	cursor: pointer;
+}
+.topBar {
+	background-color: #000000;
+	color: #FFFFFF;
+	height: 20px;
+	left: 0;
+	padding-left: 5px;
+	position: fixed;
+	top: 0;
+	width: 100%;
+	z-index: 10;
+}
+.topBar span {
+	display: inline-block;
+	height: 100%;
+	padding-top: 2px;
+	vertical-align: middle;
+}
+.container {
+	height: 100%;
+	margin-top: 20px;
+	width: 100%;
+}
+.main {
+	border-radius: 25px;
+	float: left;
+	height: 100%;
+	left: 0;
+	margin: 5px 300px 5px 10px;
+	max-width: 80%;
+	min-width: 400px;
+	width: 100%;
+	top: 20px;
+}
+.lateralBar {
+	background-color: #000000;
+	color: #FFFFFF;
+	float: right;
+	height: 100%;
+	min-height: 100%;
+	min-width: 130px;
+	padding-left: 5px;
+	position: fixed;
+	right: 0;
+	top: 20px;
+	width: 10%;
+}
+.lateralBar > p {
+	cursor: pointer;
+}
+.lbNewWorldView {
+	height: 100%;
+	text-align: center;
+	vertical-align: middle;
+	width: 100%;
+}
+.lbNewWorldView > div {
+	background-color: #FFFFFF;
+	border-radius: 10px;
+	box-shadow: 5px 5px 10px #000000;
+	margin-bottom: 25px;
+	min-width: 500px;
+	text-align: center;
+	width: 100%;
+	padding-bottom: 10px;
+}
+.lbNewWorldView > div > header {
+	background-color: #9A7958;
+	border-radius: 10px 10px 0 0;
+	margin-bottom: 10px;
+}
+.lbNewWorldView > div fieldset {
+	margin: 5px;
+}
+.lbViewActualWorldView {
+}
+.lbConfigurationView {
+}

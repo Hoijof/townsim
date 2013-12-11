@@ -1,0 +1,110 @@
+<!DOCTYPE HTML>
+
+<html xmlns="http://www.w3.org/1999/html">
+
+<head>
+	<script src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
+	<script src="../genericFunctions.js"></script>
+	<script src="../rawData/names.js"></script>
+	<script src="../rawData/translations.js"></script>
+	<script src="../Models/Citizen.js"></script>
+	<script src="../Models/Town.js"></script>
+	<script src="../Models/World.js"></script>
+	<script src="../main.js"></script>
+	<script src="js/testing.js"></script>
+
+	<link rel="stylesheet" type="text/css" href="../css/main.css">
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<title>Town Simulator</title>
+	<script>
+		document.title = "Town Simulator " +  game.version;
+	</script>
+</head>
+
+<body>
+	<div id="topBar" class="topBar">
+		<span>welcome to the header</span>
+	</div>
+	<div id="container" class="container">
+		<div id="main" class="main">
+			<div id='indexView' style="display:none">
+				<p>worldName, worldCreationTime, mapX, mapY, townMin, townMax, citizensMin, citizensMax,
+					PercentCitizensAssignedToTowns</p>
+			</div>
+			<div id='lbNewWorldView' class="lbNewWorldView" style="display:block">
+				<div>
+					<header>World Settings</header>
+					<fieldset>
+						<legend>General</legend>
+
+						<label for="newWorldName">World name: </label>
+						<input id="newWorldName" type="text" value='test' min ='1' max="15">
+
+						<label for="newWorldGodName">World God name: </label>
+						<input id="newWorldGodName" type="text" value='test' min ='1' max="15">
+
+						<label for="newWorldCreationTime">World creation time in days (0 to 10000): </label>
+						<input id="newWorldCreationTime" type="number" value="0" max="10000">
+					</fieldset>
+					<fieldset>
+						<legend>Map</legend>
+
+						<label for="newWorldMapX">Map size X (1 to 1000): </label>
+						<input id="newWorldMapX" type="number" value="10" min="1" max="1000">
+
+						<label for="newWorldMapY">Map size Y (1 to 1000): </label>
+						<input id="newWorldMapY" type="number" value="10" min="1" max="1000">
+					</fieldset>
+				</div>
+				<div>
+					<header>Town Settings</header>
+					<fieldset>
+						<legend>General</legend>
+
+						<label for="newWorldMinimumTowns">Minimum amount of towns (1 to 1000): </label>
+						<input id="newWorldMinimumTowns" type="number" value="1" min="1" max="1000">
+
+						<label for="newWorldMaximumTowns">Maximum amount of towns (1 to 1000): </label>
+						<input id="newWorldMaximumTowns" type="number" value="1" min="2" max="1000">
+					</fieldset>
+				</div>
+				<div>
+					<header>Citizens Settings</header>
+					<fieldset>
+						<legend>General</legend>
+
+						<label for="newWorldMinimumCitizens">Minimum amount of citizens (1 to 10000): </label>
+						<input id="newWorldMinimumCitizens" type="number" value="10" min="1" max="10000">
+
+						<label for="newWorldMaximumCitizens">Maximum amount of citizens (1 to 10000): </label>
+						<input id="newWorldMaximumCitizens" type="number" value="50" min="1" max="10000">
+
+						<label for="newWorldCitizensToTowns">Percentage of citizens in towns (0 - 100): </label>
+						<input id="newWorldCitizensToTowns" type="number" value="50" min="0" max="100">
+					</fieldset>
+				</div>
+				<div>
+					<header>Create World</header>
+					<input type="button" id="newWorldSubmit" value="Create World" class="generalButton">
+				</div>
+
+			</div>
+
+			<div id='lbViewActualWorldView' class="lbViewActualWorldView" style="display:none">
+				lbViewActualWorldView
+			</div>
+
+			<div id='lbConfigurationView' class="lbConfigurationView" style="display:none">
+				lbConfigurationView
+			</div>
+		</div>
+		<div id="lateralBar" class="lateralBar">
+			<p id='lbNewWorld'>New World</p>
+			<p id='lbViewActualWorld'>View Actual World</p>
+			<p id='lbConfiguration'>Configuration</p>
+		</div>
+	</div>
+
+</body>
+
+</html>

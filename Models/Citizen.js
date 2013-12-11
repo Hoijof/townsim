@@ -1,9 +1,9 @@
-function Citizen(name, surname, age, sex) {
+function Citizen(name, surname, birthday, sex) {
 	this.id = world.getLastCitizenId();
 	this.name = name;
 	this.surname = surname;
 	this.sex = sex;
-	this.age = age;
+	this.birthday = birthday;
 	this.bornPlace = world.getName();
 	this.nickname = 'undefined';
 	this.profession = [-1, 0, 0]; //[name, level, exp]
@@ -29,16 +29,16 @@ Citizen.prototype.setNickname = function (nickname) {
 };
 Citizen.prototype.getStats = function () {
 	return this.stats;
-}
+};
 Citizen.prototype.setStats = function (stats) {
 	this.stats = stats;
-}
+};
 Citizen.prototype.getSkills = function () {
 	return this.skills;
-}
+};
 Citizen.prototype.setSkills = function (skills) {
 	this.skills = skills;
-}
+};
 Citizen.prototype.getId = function() {
 	return this.id;
 };
@@ -53,18 +53,18 @@ Citizen.prototype.getSurname = function () {
 };
 Citizen.prototype.getSex = function () {
 	return this.sex;
-}
+};
 Citizen.prototype.setSex = function (sex) {
 	this.sex = sex;
-}
+};
 Citizen.prototype.setSurname = function (surname) {
 	this.surname = surname;
 };
-Citizen.prototype.getAge = function () {
-	return this.age;
+Citizen.prototype.getBirthday = function () {
+	return this.birthday;
 };
-Citizen.prototype.setAge = function (age) {
-	this.age = age;
+Citizen.prototype.setBirthday = function (birthday) {
+	this.birthday = birthday;
 };
 Citizen.prototype.getProfession = function () {
 	return this.profession;
@@ -81,7 +81,8 @@ Citizen.prototype.setTown = function(town) {
 
 //algorithm functions
 Citizen.prototype.salute = function() {
-	var message = "Sir, this is citizen " + this.name + " " + this.surname + " and I\'m a " + this.sex + ".";
+	var message = "Sir, this is citizen " + this.name + " " + this.surname + " and I\'m a " + this.sex
+					+ " and I\'m " + getAgeFromTime(this.getBirthday()) + " years old.";
 	if (this.town !== 'undefined') {
 		message += " I'm from " + this.town.getName();
 	} else {

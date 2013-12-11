@@ -1,10 +1,10 @@
-function World (name, creationDate, towns, citizens, lastTownId, lastCitizenId) {
+function World (name, creationTime, towns, citizens, lastTownId, lastCitizenId) {
 	this.name = name;
 	this.towns = towns;
 	this.citizens = citizens;
 	this.lastTownId = lastTownId;
 	this.lastCitizenId = lastCitizenId;
-	this.creationDate = creationDate;
+	this.creationTime = creationTime;
 	this.god = "undefined";
 	this.map = [[0,0],[0,0]];
 }
@@ -17,11 +17,11 @@ World.prototype.getName = function() {
 World.prototype.setName = function(name) {
 	this.name = name;
 };
-World.prototype.getCreationDate = function() {
-	return this.creationDate;
+World.prototype.getCreationTime = function() {
+	return this.creationTime;
 };
-World.prototype.setCreationDate = function(creationDate) {
-	this.creationDate = creationDate;
+World.prototype.setCreationTime = function(creationTime) {
+	this.creationTime = creationTime;
 };
 World.prototype.getGod = function() {
 	return this.god;
@@ -69,7 +69,13 @@ World.prototype.getLastTownId = function() {
 World.prototype.getLastCitizenId = function() {
 	return this.lastCitizenId++;
 };
+World.prototype.describeWorld = function () {
+	var message = "This is the world called " + this.getName() + ". Created on " + getDateFromTime(this.getCreationTime());
+	message += " " + this.getName() + " has " + this.citizens.size() + " citizens and " + this.towns.size() + " towns."
+			+ " The god of this world is called " + this.getGod();
 
+	console.log(message);
+};
 
 // algorith functions
 World.prototype.generateCitizens = function(min, max) {
@@ -81,7 +87,7 @@ World.prototype.generateCitizens = function(min, max) {
 		if (getRandomInt(0,1)) sex = "male";
 		else sex = "female";
 
-		var citizen = new Citizen(getRandomCitizenName(sex), getRandomCitizenSurname(), getRandomInt(0,100), sex);
+		var citizen = new Citizen(getRandomCitizenName(sex), getRandomCitizenSurname(), actualTime, sex);
 
 		var profession = new Array(3);
 		profession[0] = getRandomInt(0,_tProfessions.length-1);
@@ -102,7 +108,7 @@ World.prototype.generateTowns = function(min, max) {
 
 	for (i; i < end; ++i ) {
 		var randomCoords = world.getRandomCords();
-		var town = new Town(getRandomTownName(), "Today", randomCoords[0],randomCoords[1], getRandomInt(5,100));
+		var town = new Town(getRandomTownName(), actualTime, randomCoords[0],randomCoords[1], getRandomInt(5,100));
 		this.setTown(town);
 	}
 };
@@ -140,7 +146,7 @@ World.prototype.assignCitizensToTowns = function (totalAssigned) {
 	} while ( (citizensWithoutHome/this.citizens.length) > (1-totalAssigned))
 };
 
-World.prototype.assingMajors = function () {
+World.prototype.assignMajors = function () {
 	this.towns.forEach(function (town){
 			if (town.getNumberOfCitizens() > 0) {
 				town.setMajor(town.getRandomCitizen());

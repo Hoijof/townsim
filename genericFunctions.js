@@ -11,6 +11,14 @@ function isAppening(prob) {
 
 }
 
+function getDocumentRot (keyWord) {
+	var  baseUrl = document.location.href.split("/");
+	do {
+		baseUrl.splice(-1,1);
+	} while (baseUrl[baseUrl.length-1] != keyWord);
+	return baseUrl.join('/');
+}
+
 function loadjsfile( filename)
 {
 	var rnd = Math.floor(Math.random()*80000);
@@ -37,6 +45,22 @@ function getRandomCitizenSurname() {
 function getRandomTownName() {
 	if(isAppening(33)) return townNames[getRandomInt(0,townNames.length-1)];
 	return townFirstNames[getRandomInt(0,townFirstNames.length-1)]+townSecondNames[getRandomInt(0,townSecondNames.length-1)];
+}
+function getDateFromTime(time) {
+	var year, month, day;
+
+	year = time/(daysInAMonth*monthsInAYear);
+	month = time%(daysInAMonth*monthsInAYear);
+	day = month%daysInAMonth;
+	month /= daysInAMonth;
+
+	return Math.floor(day+1) + "-" + Math.floor(month+1) + "-" + Math.floor(year);
+}
+function getAgeFromTime(time) {
+	var age = actualTime - time;
+	age = age/(daysInAMonth*monthsInAYear);
+
+	return Math.floor(age);
 }
 
 

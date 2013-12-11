@@ -1,29 +1,23 @@
 
-/*var world = new World ('Earth', new Array(), new Array(), 0, 0);
-var t1 = new Town('Charlestown', 10, 11);
-var t2 = new Town('GoirsLand', 20, 44);
-var c1 = new Citizen('Bob', 'Sinclair', 23);
-var c2 = new Citizen('George', 'RR Martin', 19);
-var c3 = new Citizen('Hoijof', 'Golpeo', 23);
-var c4 = new Citizen('Arkey', 'Seoras', 23);
-var c5 = new Citizen('Ismael', 'Gordo', 100);
 
+var game = {version: '0.0.2', stage: 'development'};
 
-t1.setCitizen(c1);
-t1.setCitizen(c2);
-t2.setCitizen(c3);
-t2.setCitizen(c4);
-t2.setCitizen(c5);
+function createWorld (worldName, worldCreationTime, mapX, mapY, townMin, townMax, citizensMin, citizensMax,
+			   citizensToTowns, godName) {
+	world = new World (worldName, worldCreationTime, [], [], 0, 0);
+	world.setGod(godName);
+	world.createMap(mapX,mapY);
+	world.generateTowns(townMin,townMax);
+	world.generateCitizens(citizensMin,citizensMax);
+	actualTime = 8522;
+	world.assignCitizensToTowns(citizensToTowns);
+	world.assignMajors();
+	world.describeWorld();
+	world.describeTowns();
+	world.introduceCitizens();
+}
 
-t1.introduceCitizens();
-t2.introduceCitizens();*/
-
-var world = new World ('Tainor', "Yesterday", [], [], 0, 0);
-world.setGod("Goirs");
-world.createMap(300,450);
-world.generateTowns(35,35);
-world.generateCitizens(8000,8000);
-world.assignCitizensToTowns(0.899);
-world.assingMajors();
-world.describeTowns();
-//world.introduceCitizens();
+var world = 'undefined';
+var actualTime = 0;
+var daysInAMonth = 25;
+var monthsInAYear = 10;
