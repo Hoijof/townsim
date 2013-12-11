@@ -11,6 +11,8 @@ function Citizen(name, surname, birthday, sex) {
 	this.stats = [0,0,0,0,0,0];
 	this.skills = [];
 
+    //init functions
+
 	world.setCitizen(this);
 }
 
@@ -94,4 +96,45 @@ Citizen.prototype.salute = function() {
 
 	console.log(message);
 };
+Citizen.prototype.generateStats = function(pointsToAssign) {
+    Math.seedrandom();
+    var stats = new Array(_tStats.length);
+    for(var i = 0; i < stats.length; ++i) stats[i] = 0;
 
+    var points = pointsToAssign;
+    while(points > 0) {
+        var statsCount = [];
+        for(var i = 0; i < stats.length; ++i) statsCount[i] = i;
+        while (statsCount.size() > 0 && points > 0) {
+            var tmpRandom = getRandomInt(0,statsCount.size()-1);
+            var tmpPoints = 0;
+            if(points > 0.5*pointsToAssign) tmpPoints = getRandomInt(0, points*0.5);
+            else tmpPoints = getRandomInt(0, points);
+            stats[statsCount[tmpRandom]] += tmpPoints;
+            points -= tmpPoints;
+            statsCount.splice(tmpRandom,1);
+        }
+    }
+    this.setStats(stats);
+};
+Citizen.prototype.generateSkills = function(pointsToAssign) {
+    Math.seedrandom();
+    var skills = new Array(_tSkills.length);
+    for(var i = 0; i < skills.length; ++i) skills[i] = 0;
+    var points = pointsToAssign;
+
+    while(points > 0) {
+        var skillsCount = [];
+        for(var i = 0; i < skills.length; ++i) skillsCount[i] = i;
+        while (skillsCount.size() > 0 && points > 0) {
+            var tmpRandom = getRandomInt(0,skillsCount.size()-1);
+            var tmpPoints = 0;
+            if(points > 0.5*pointsToAssign) tmpPoints = getRandomInt(0, points*0.5);
+            else tmpPoints = getRandomInt(0, points);
+            skills[skillsCount[tmpRandom]] += tmpPoints;
+            points -= tmpPoints;
+            skillsCount.splice(tmpRandom,1);
+        }
+    }
+    this.setSkills(skills);
+};

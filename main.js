@@ -11,12 +11,14 @@ function createWorld (worldName, worldCreationTime, mapX, mapY, townMin, townMax
 	world.generateCitizens(citizensMin,citizensMax);
 	world.assignCitizensToTowns(citizensToTowns);
 	world.assignMajors();
-	world.describeWorld();
-	world.describeTowns();
-	world.introduceCitizens();
+	//world.describeWorld();
+	//world.describeTowns();
+	//world.introduceCitizens();
 }
-
+Math.seedrandom();
 var world = 'undefined';
 var actualTime = 0;
 var daysInAMonth = 25;
 var monthsInAYear = 10;
+var statPointsToAssign = 100;
+var skillPointsToAssign = 20;

@@ -32,11 +32,11 @@ World.prototype.setGod = function(god) {
 
 World.prototype.setTown = function(town) {
 	this.towns[town.id] = town;
-	this.map[town.getX()][town.getY()] = town.id;
+	this.map[town.getY()][town.getX()] = town.id;
 };
 World.prototype.removeTown = function(town) {
 	this.towns.splice(town.id, 1);
-	this.map[town.getX()][town.getY()] = -1;
+	this.map[town.getY()][town.getX()] = -1;
 };
 World.prototype.getTownById = function (id) {
 	return this.towns[id];
@@ -97,6 +97,8 @@ World.prototype.generateCitizens = function(min, max) {
 		else profession[1] = 0;
 		profession[2] = 14;
 		citizen.setProfession(profession);
+        citizen.generateStats(statPointsToAssign);
+        citizen.generateSkills(skillPointsToAssign);
 		citizen.setTown(this.getName());
 		this.citizens[citizen.id] = citizen;
 	}
@@ -107,17 +109,18 @@ World.prototype.generateTowns = function(min, max) {
 	var end = i + getRandomInt(min, max);
 
 	for (i; i < end; ++i ) {
-		var randomCoords = world.getRandomCords();
-		var town = new Town(getRandomTownName(), actualTime, randomCoords[0],randomCoords[1], getRandomInt(5,100));
+		var randomCords = world.getRandomCords();
+		var town = new Town(getRandomTownName(), actualTime, randomCords[0],randomCords[1], getRandomInt(5,100));
 		this.setTown(town);
 	}
 };
 
 World.prototype.getRandomCords = function () { //TODO Do while not a good option
-	var tmp = [getRandomInt(0,this.map[0].length-1), getRandomInt(0,this.map[0].length-1)];
+	var tmp = [getRandomInt(0,this.map[0].length-1), getRandomInt(0,this.map.length-1)];
+
 	do {
-		if (this.map[tmp[0]][tmp[1]] == -1) break;
-		else tmp = [getRandomInt(0,this.map[0].length-1), getRandomInt(0,this.map[0].length-1)];
+		if (this.map[tmp[1]][tmp[0]] == -1) break;
+		else tmp = [getRandomInt(0,this.map[0].length-1), getRandomInt(0,this.map.length-1)];
 	} while (true);
 	return tmp;
 };

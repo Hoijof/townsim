@@ -195,6 +195,16 @@ $("document").ready(function() {
 				if (typeof(tmp) == 'object') $('#scTown').html("<span id=\"scTown-" + tmp.getId()
 														+ "\" class=\"clickableInfo\">" + tmp.getName() + "</span>");
 				else $('#scTown').html(world.getName());
+
+                //Stats&Skills
+                var stats = citizen.getStats();
+                var html = "";
+                    for(var i = 0; i < stats.length; i++) html += "<div>" + _tStats[i] + ": " + stats[i] +"</div>";
+                $("#scStats").html(html);
+                var skills = citizen.getSkills();
+                html = "";
+                    for(i = 0; i < skills.length; i++) html += "<div>" + _tSkills[i] + ": " + skills[i] +"</div>";
+                $("#scSkills").html(html);
 			break;
 			case "#showTownView":
 				if(params[0] != "showTownView"){

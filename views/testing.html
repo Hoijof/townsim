@@ -5,6 +5,7 @@
 <head>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<script src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
+	<script src="../includes/seedRandom.js"></script>
 	<script src="../genericFunctions.js"></script>
 	<script src="../rawData/names.js"></script>
 	<script src="../rawData/translations.js"></script>
@@ -61,11 +62,11 @@
 						<legend>Map</legend>
 						<div>
 							<label for="newWorldMapX">Map size X (1 to 1000): </label>
-							<input id="newWorldMapX" type="number" value="10" min="1" max="1000">
+							<input id="newWorldMapX" type="number" value="65" min="1" max="1000">
 						</div>
 						<div>
 							<label for="newWorldMapY">Map size Y (1 to 1000): </label>
-							<input id="newWorldMapY" type="number" value="10" min="1" max="1000">
+							<input id="newWorldMapY" type="number" value="50" min="1" max="1000">
 						</div>
 					</fieldset>
 				</div>
@@ -75,11 +76,11 @@
 						<legend>General</legend>
 						<div>
 							<label for="newWorldMinimumTowns">Minimum amount of towns (1 to 1000): </label>
-							<input id="newWorldMinimumTowns" type="number" value="1" min="1" max="1000">
+							<input id="newWorldMinimumTowns" type="number" value="3" min="1" max="1000">
 						</div>
 						<div>
 							<label for="newWorldMaximumTowns">Maximum amount of towns (1 to 1000): </label>
-							<input id="newWorldMaximumTowns" type="number" value="1" min="2" max="1000">
+							<input id="newWorldMaximumTowns" type="number" value="7" min="2" max="1000">
 						</div>
 					</fieldset>
 				</div>
@@ -183,7 +184,7 @@
 						</div>
 					</fieldset>
 					<fieldset id="swListOfCitizensWithoutTown" class="toCitizenList">
-						<legend>List of Citizens whitout town</legend>
+						<legend>List of Citizens without town</legend>
 						<div class="ulContainer">
 							<ul>
 								<li id="swCitizen-1">
@@ -256,20 +257,16 @@
 					</fieldset>
 
 					<fieldset>
-						<legend>Stats & Skills</legend>
+						<legend>Stats</legend>
 						<div>
-							<label for="test">Test: </label>
-							<span id="test" >TESTdfasdfasdfasfasdfasdfasdfafasdf	</span>
+							<span id="scStats" ></span>
 						</div>
+					</fieldset>
+
+					<fieldset>
+						<legend>Skills</legend>
 						<div>
-							<label for="test">Test: </label>
-							<span id="test" >TEST	</span>
-						</div>
-						<div>
-							<label for="test">Test: </label>
-							<span id="test" >TEST	</span>
-						</div>
-						<div>
+							<span id="scSkills" ></span>
 						</div>
 					</fieldset>
 				</div>
