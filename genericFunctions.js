@@ -65,7 +65,7 @@ function getDateFromTime(time) {
 			+ formatNumberLength(Math.floor(year),4);
 }
 function getAgeFromTime(time) {
-	var age = actualTime - time;
+	var age = world.getActualTime() - time;
 	age = age/(daysInAMonth*monthsInAYear);
 
 	return Math.floor(age);

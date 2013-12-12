@@ -4,7 +4,7 @@ function World (name, creationTime, towns, citizens, lastTownId, lastCitizenId) 
 	this.citizens = citizens;
 	this.lastTownId = lastTownId;
 	this.lastCitizenId = lastCitizenId;
-	this.creationTime = creationTime;
+	this.actualTime = creationTime;
 	this.god = "undefined";
 	this.map = [[0,0],[0,0]];
 }
@@ -17,11 +17,11 @@ World.prototype.getName = function() {
 World.prototype.setName = function(name) {
 	this.name = name;
 };
-World.prototype.getCreationTime = function() {
-	return this.creationTime;
+World.prototype.getActualTime = function() {
+	return this.actualTime;
 };
-World.prototype.setCreationTime = function(creationTime) {
-	this.creationTime = creationTime;
+World.prototype.setActualTime = function(actualTime) {
+	this.actualTime = actualTime;
 };
 World.prototype.getGod = function() {
 	return this.god;
@@ -70,14 +70,14 @@ World.prototype.getLastCitizenId = function() {
 	return this.lastCitizenId++;
 };
 World.prototype.describeWorld = function () {
-	var message = "This is the world called " + this.getName() + ". Created on " + getDateFromTime(this.getCreationTime());
+	var message = "This is the world called " + this.getName() + ". Created on " + getDateFromTime(this.getActualTime());
 	message += " " + this.getName() + " has " + this.citizens.size() + " citizens and " + this.towns.size() + " towns."
 			+ " The god of this world is called " + this.getGod();
 
 	console.log(message);
 };
 
-// algorith functions
+// algorithm functions
 World.prototype.generateCitizens = function(min, max) {
 	var i = this.lastCitizenId;
 	var end = i + getRandomInt(min, max);
@@ -87,16 +87,14 @@ World.prototype.generateCitizens = function(min, max) {
 		if (getRandomInt(0,1)) sex = "male";
 		else sex = "female";
 
-		var citizen = new Citizen(getRandomCitizenName(sex), getRandomCitizenSurname(), actualTime, sex);
-
+		var citizen = new Citizen(getRandomCitizenName(sex), getRandomCitizenSurname(), this.getActualTime(), sex);
+		citizen.generateStats(statPointsToAssign);
+		citizen.generateSkills(skillPointsToAssign);
 		var profession = new Array(3);
 		profession[0] = getRandomInt(0,_tProfessions.length-1); // profession
 		profession[1] = 0; // level
 		profession[2] = 0; // events linked to the profession such as ]
 		citizen.setProfession(profession);
-		citizen.generateStats(statPointsToAssign);
-		citizen.generateSkills(skillPointsToAssign);
-		if(profession[0] == 0) setProfessionLevelByCitizen(citizen);
 		citizen.setTown(this.getName());
 		this.citizens[citizen.id] = citizen;
 	}
@@ -108,7 +106,7 @@ World.prototype.generateTowns = function(min, max) {
 
 	for (i; i < end; ++i ) {
 		var randomCords = world.getRandomCords();
-		var town = new Town(getRandomTownName(), actualTime, randomCords[0],randomCords[1], getRandomInt(5,100));
+		var town = new Town(getRandomTownName(), this.getActualTime(), randomCords[0],randomCords[1], getRandomInt(5,100));
 		this.setTown(town);
 	}
 };
@@ -154,4 +152,17 @@ World.prototype.assignMajors = function () {
 			}
 		}
 	);
+};
+
+World.prototype.passADay = function () {
+	this.setActualTime(this.getActualTime()+1);
+	this.towns.forEach(function(town){
+		town.makeCitizensWork();
+	});
+
+	if ((this.getActualTime() % (daysInAMonth*monthsInAYear)) == 0) {
+		this.citizens.forEach(function (citizen){
+			citizen.setProfession(citizen.getProfession());
+		});
+	}
 };

@@ -61,7 +61,7 @@ Town.prototype.getMajor = function () {
 };
 Town.prototype.setMajor = function (citizen) {
 	this.major = citizen;
-	var profession = [-2,1,0]; // to expand
+	var profession = [-2,0,0]; // to expand
 	citizen.setProfession(profession);
 };
 
@@ -104,5 +104,11 @@ Town.prototype.describe = function () {
 	console.log(message);
 };
 
+Town.prototype.makeCitizensWork = function () {
+
+	this.citizens.forEach(function(citizen){
+		if(citizen.getProfession()[0] != -1) giveWorkExperiencieFromCitizen(citizen);
+	})
+};
 
 

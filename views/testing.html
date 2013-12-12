@@ -44,10 +44,6 @@
 			</div>
 			<div id='lbNewWorldView' class="standardView" style="display:none;">
 				<div>
-					<div>
-						<header>Create World</header>
-						<input type="button" id="newWorldSubmit" value="Create World" class="generalButton">
-					</div>
 					<header>World Settings</header>
 					<fieldset>
 						<legend>General</legend>
@@ -124,8 +120,8 @@
 							<span id="swName"></span>
 						</div>
 						<div>
-							<label for="swCreationDate">Creation Date: </label>
-							<span id="swCreationDate"></span>
+							<label for="swActualDate">Actual Date: </label>
+							<span id="swActualDate"></span>
 						</div>
 						<div>
 							<label for="swGodName">God name: </label>
@@ -135,10 +131,6 @@
 							<label for="swMapSize">Map size: </label>
 							<span id="swMapSize"></span>
 						</div>
-					</fieldset>
-
-					<fieldset>
-						<legend>Towns information</legend>
 						<div>
 							<label for="swNumberOfTowns">nº of towns: </label>
 							<span id="swNumberOfTowns" >	</span>
@@ -336,6 +328,7 @@
 			<p id='lbConfiguration'>Configuration</p>
 			<p id='showCitizen'>Show citizen</p>
 			<p id='showTown'>Show town</p>
+			<div id='nextDay' class="clickableInfo">Next Day <input type="text" value="1000"></div>
 		</div>
 	</div>
 

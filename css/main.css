@@ -107,7 +107,7 @@ input {
 }
 .standardView > div fieldset {
 	margin: 5px;
-	max-height: 200px;
+	max-height: 600px;
 }
 .standardView > div > fieldset > label {
 	margin: 10px 0;
@@ -118,7 +118,6 @@ input {
 .standardView > div > fieldset {
 	max-width: 400px;
 	float:left;
-	height: 200px;
 }
 
 .lbViewActualWorldView > div > fieldset {
@@ -141,6 +140,9 @@ input {
 	overflow-x: hidden;
 	overflow-y: scroll;
 	height: 96%;
+}
+.activated {
+	color: green;
 }
 @media screen and (min-width:600px) and (max-width:1000px){
 	.standardView > div > fieldset > label {

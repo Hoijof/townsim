@@ -17,10 +17,9 @@ function createWorld (worldName, worldCreationTime, mapX, mapY, townMin, townMax
 }
 Math.seedrandom();
 var world = 'undefined';
-var actualTime = 0;
 var daysInAMonth = 25;
 var monthsInAYear = 10;
-var statPointsToAssign = 100;
-var skillPointsToAssign = 20;
+var statPointsToAssign = 120;
+var skillPointsToAssign = 400;
 var maxStat = 100;
 var maxSkill = 1000;

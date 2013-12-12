@@ -113,6 +113,21 @@ $("document").ready(function() {
 		setActiveView("showTown");
 	});
 
+	$("#nextDay").on("click", function() {
+		if (timeTimer != -1) {
+			window.clearInterval(timeTimer);
+			timeTimer = -1;
+			$(this).removeClass('activated');
+		} else {
+			$(this).addClass('activated');
+			timeTimer = setInterval(function(){
+				world.passADay();
+				updateTopBar();
+				updateActiveView();
+			},$(this).find("> input").val());
+		}
+	});
+
 	function updateActiveView() {
 		switch(activeView.selector) {
 			case "#lbNewWorldView":
@@ -122,7 +137,7 @@ $("document").ready(function() {
 
 				//general
 				$("#swName").html(world.getName());
-				$("#swCreationDate").html(getDateFromTime(world.getCreationTime()));
+				$("#swActualDate").html(getDateFromTime(world.getActualTime()));
 				$("#swGodName").html(world.getGod());
 				$("#swMapSize").html(world.map[0].length + "x" + world.map.length);
 
@@ -252,14 +267,12 @@ $("document").ready(function() {
 		$("#tbTowns").html(world.towns.size());
 		$("#tbCitizens").html(world.citizens.size());
 		$("#tbMapSize").html(world.map[0].length + "x" + world.map.length);
-		$("#tbDate").html(getDateFromTime(actualTime));
+		$("#tbDate").html(getDateFromTime(world.getActualTime()));
 	}
 
 	var activeView = "undefined";
 	var params = [];
-//	var timeTimer = 1;
-//	window.clearInterval(timeTimer);
-//			timeTimer = setInterval(function(){passADay()},10000);
+	var timeTimer = -1;
 	initTesting();
 });
 

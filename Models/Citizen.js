@@ -8,7 +8,7 @@ function Citizen(name, surname, birthday, sex) {
 	this.nickname = 'undefined';
 	this.profession = [-1, 0, 0]; //[name, level, exp]
 	this.town = 'undefined';
-	this.stats = [0,0,0,0,0,0];
+	this.stats = [];
 	this.skills = [];
 	this.status = [0,1];
 	this.socialStatus = [0];
@@ -74,6 +74,7 @@ Citizen.prototype.getProfession = function () {
 	return this.profession;
 };
 Citizen.prototype.setProfession = function (profession) {
+	profession[1] = getProfessionLevelByProfessionAndCitizen(profession, this);
 	this.profession = profession;
 };
 Citizen.prototype.getTown = function() {
@@ -93,7 +94,7 @@ Citizen.prototype.getSocialStatus = function () {
 };
 Citizen.prototype.setSocialStatus = function (socialStatus) {
 	this.socialStatus = socialStatus;
-}
+};
 
 //algorithm functions
 Citizen.prototype.salute = function() {
@@ -118,7 +119,7 @@ Citizen.prototype.generateStats = function(pointsToAssign) {
     var points = pointsToAssign;
     while(points > 0) {
         var statsCount = [];
-        for(var i = 0; i < stats.length; ++i) statsCount[i] = i;
+        for(i = 0; i < stats.length; ++i) statsCount[i] = i;
         while (statsCount.size() > 0 && points > 0) {
             var tmpRandom = getRandomInt(0,statsCount.size()-1);
             var tmpPoints = 0;
@@ -141,7 +142,7 @@ Citizen.prototype.generateSkills = function(pointsToAssign) {
 
     while(points > 0) {
         var skillsCount = [];
-        for(var i = 0; i < skills.length; ++i) skillsCount[i] = i;
+        for(i = 0; i < skills.length; ++i) skillsCount[i] = i;
         while (skillsCount.size() > 0 && points > 0) {
             var tmpRandom = getRandomInt(0,skillsCount.size()-1);
             var tmpPoints = 0;
