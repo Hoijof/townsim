@@ -144,9 +144,31 @@ input {
 .activated {
 	color: green;
 }
-@media screen and (min-width:600px) and (max-width:1000px){
+@media screen and (min-width:0px) and (max-width:1000px){
 	.standardView > div > fieldset > label {
 		display:block;
 		margin: 10px 0;
+	}
+	.lateralBar {
+		background-color: #000000;
+		color: #FFFFFF;
+		height: 40px;
+		left: 0;
+		padding-left: 5px;
+		position: fixed;
+		top: 20px;
+		width: 100%;
+		z-index: 10;
+		min-height: 20px;
+	}
+	.lateralBar > p {
+		float: left;
+		margin-right: 10px;
+	}
+	.main {
+		margin-top: 45px;
+	}
+	.clickableInfo > input{
+		width: 30px;
 	}
 }
